@@ -17,7 +17,7 @@ header {
 }
 
 .header_right a:hover, .header_left a:hover {
-  color: #000000;
+  color: rgba(50, 50, 50);
   text-decoration: underline;
 }
 
