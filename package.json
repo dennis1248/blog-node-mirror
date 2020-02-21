@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/dennis1248/blog.git"
+  },
+  "author": "Dennis ten Hoove",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/dennis1248/blog/issues"
+  },
+  "homepage": "https://gitlab.com/dennis1248/blog#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}
