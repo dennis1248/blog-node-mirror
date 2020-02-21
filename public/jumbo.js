@@ -27,5 +27,4 @@ jumboRight.addEventListener("click", function () {
   img++;
   rollImgFoward();
   jumboBody.style.backgroundImage = "url(/images/placeholder_" + img + ".jpg)";
-  console.log(img);
 });
