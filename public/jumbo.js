@@ -1,9 +1,9 @@
 const jumboLeft = document.getElementById("jumbo_btn_left");
-const jumboRight = document.getElementById("jumbo_btn_right")
+const jumboRight = document.getElementById("jumbo_btn_right");
 const jumboBody = document.getElementById("main_jumbo");
 
 var img = 1;
-var imgCount = 3; // The amount of images it needs to load
+var imgCount = 3; // The amount of images
 
 function rollImgFoward() {
   if (img === (imgCount + 1)) {
