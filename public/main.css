@@ -5,6 +5,8 @@ body {
 
 header {
   height: 4em;
+  max-width: 1280px;
+  margin: auto;
 }
 
 .header_right a, .header_left a {
@@ -46,7 +48,7 @@ header {
 }
 
 .jumbotron {
-  background-image: url(/images/placeholder_2.jpg);
+  background-image: url(/images/placeholder_1.jpg);
   height: 10em;
   width: 1280px;
   background-size: cover;
@@ -55,25 +57,26 @@ header {
   margin: auto;
   color: white;
   font-size: 5em;
+  user-select: none;
 }
 
-.jumbo_btn_left {
+#jumbo_btn_left {
   text-align: left;
   float: left;
 }
 
-.jumbo_btn_right {
+#jumbo_btn_right {
   text-align: right;
   float: right;
 }
 
-.jumbo_btn_left, .jumbo_btn_right {
+#jumbo_btn_left, #jumbo_btn_right {
   margin-top: 4em;
   width: 1em;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.jumbo_btn_left:hover, .jumbo_btn_right:hover {
+#jumbo_btn_left:hover, #jumbo_btn_right:hover {
   margin-top: 4em;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.7);
