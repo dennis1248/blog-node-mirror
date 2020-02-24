@@ -20,8 +20,8 @@ app.get("/posts", function (req, res) {
 })
 
 // About page
-app.get("/about", function (req, res) {
-  res.render("about.ejs");
+app.get("/projects", function (req, res) {
+  res.render("projects.ejs");
 })
 
 // Login page
