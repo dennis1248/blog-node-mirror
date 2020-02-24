@@ -21,6 +21,19 @@ header {
   text-decoration: underline;
 }
 
+a:nth-child(4) {
+  color: rgba(195, 195, 195);
+  font-style: italic;
+  box-shadow: 1px 0px 5px #a8a8a8;
+  padding: 5px 8px 5px 8px;
+}
+
+a:nth-child(4):hover {
+  color: white;
+  background-color: #a8a8a8;
+  text-decoration: none;
+}
+
 .header_left h3 {
   margin: 0;
   padding-left: 25px;
@@ -60,6 +73,27 @@ header {
   user-select: none;
 }
 
+#login_container {
+  padding: 50px 0 0 75px;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+#login_container form input[type=text], #login_container form input[type=password]  {
+  width: 97.5%;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  margin-top: 10px;
+  padding: 7px;
+}
+
+#login_container form input[type=submit] {
+  margin-top: 12px;
+  float: right;
+  border: 1px solid #eee;
+  padding: 10px 15px 10px 15px;
+}
+
 #jumbo_btn_left {
   text-align: left;
   float: left;
@@ -81,6 +115,8 @@ header {
   color: rgba(255, 255, 255, 0.7);
 }
 
+
+/* Responsive stuff */
 @media screen and (max-width: 1280px) {
   .jumbotron {
     width: 100%;
@@ -112,6 +148,30 @@ header {
   }
 
   .header_right a:nth-child(3) {
+    margin-right: 40px;
+  }
+
+  .header_right a:nth-child(4) {
     margin-right: 0;
+    padding: 0;
+    box-shadow: none;
+    font-style: normal;
+    color: #a8a8a8;
+  }
+
+  a:nth-child(4):hover {
+    color: rgba(50, 50, 50);
+    text-decoration: underline;
+    background: none;
+  }
+
+  #login_container {
+    margin: auto;
+    padding: 50px 0 0 0;
+    width: 300px;
+  }
+
+  #login_container form input[type=text], #login_container form input[type=password] {
+    width: 95%;
   }
 }

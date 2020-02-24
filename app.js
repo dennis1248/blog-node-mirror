@@ -24,6 +24,16 @@ app.get("/about", function (req, res) {
   res.render("about.ejs");
 })
 
+// Login page
+app.get("/login", function (req, res) {
+  res.render("login.ejs");
+})
+
+// Login page
+app.post("/login", function (req, res) {
+  res.redirect("/");
+})
+
 // Start server and listen for GET requests
 app.listen(port, function () {
 	console.log("server is listening");

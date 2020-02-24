@@ -1,0 +1,14 @@
+<%- include("partials/header.ejs") %>
+
+<div class="content">
+  <div id="login_container">
+    <h3>Login</h3>
+      <form action="/login" method="POST">
+        <input type="text" name="acc_name" placeholder="username" autocomplete="off">
+        <input type="password" name="acc_passwd" placeholder="password">
+        <input type="submit" name="acc_send" value="Login!">
+      </form>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
