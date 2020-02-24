@@ -31,6 +31,7 @@ app.get("/login", function (req, res) {
 
 // Login page
 app.post("/login", function (req, res) {
+  // Put logic here
   res.redirect("/");
 })
 
