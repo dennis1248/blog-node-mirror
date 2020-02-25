@@ -16,11 +16,6 @@ var today = new Date(),
 
 today = mm + '/' + dd + '/' + yyyy;
 
-var userName = "Jan Klaas";
-var title = "Example WITHOUT image";
-var post = "This is an example without an image."
-var image = undefined
-
 // Mongoose
 mongoose.connect("mongodb://localhost/blog");
 
@@ -100,9 +95,9 @@ app.post("/newpost", function (req, res) {
       image   = req.body.image;
 
   if (image === "undefined") {
-    var newPost = {name: name, title: title, post: post, image: undefined};
+    var newPost = {name: name, title: title, post: post, date: today, image: undefined};
   } else {
-    var newPost = {name: name, title: title, post: post, image: image};
+    var newPost = {name: name, title: title, post: post, date: today, image: image};
   }
 
   blogPost.create(newPost, function (err, newMadePost) {
