@@ -1,0 +1,16 @@
+<%- include("partials/header.ejs") %>
+
+<div class="content">
+  <div id="login_container">
+    <h3>New post</h3>
+      <form action="/newpost" method="POST">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="title" placeholder="title">
+        <textarea type="text" name="post" placeholder="Your awesome post"></textarea>
+        <input type="text" name="image" placeholder="image link">
+        <input type="submit" name="post_send" value="Post!">
+      </form>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

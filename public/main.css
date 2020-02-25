@@ -181,7 +181,16 @@ a:nth-child(4):hover {
 .post:hover {
   background-color: rgba(238, 238, 238, 0.5);
   cursor: pointer;
+}
 
+/* Post page */
+textarea {
+  height: 10em;
+  width: 100%;
+  resize: none;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  margin-top: 15px;
 }
 
 /* Responsive stuff */
@@ -262,6 +271,10 @@ a:nth-child(4):hover {
   }
 
   #login_container form input[type=text], #login_container form input[type=password] {
+    width: 95%;
+  }
+
+  textarea {
     width: 95%;
   }
 

@@ -76,6 +76,11 @@ app.get("/projects", function (req, res) {
   res.render("projects.ejs");
 })
 
+// TEST new posts
+app.get("/newpost", function (req, res) {
+  res.render("newpost.ejs");
+})
+
 // Login page
 app.get("/login", function (req, res) {
   res.render("login.ejs");
@@ -83,6 +88,12 @@ app.get("/login", function (req, res) {
 
 // Login
 app.post("/login", function (req, res) {
+  // Put logic here
+  res.redirect("/");
+})
+
+// New post
+app.post("/newpost", function (req, res) {
   // Put logic here
   res.redirect("/");
 })
