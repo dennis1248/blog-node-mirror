@@ -16,9 +16,10 @@ var today = new Date(),
 
 today = mm + '/' + dd + '/' + yyyy;
 
-var userName = "Dennis1248";
-var title = "How to be cool";
-var post = "Potatos are very cool ayy lmao lol something not every interesting"
+var userName = "Jan Klaas";
+var title = "Example WITHOUT image";
+var post = "This is an example without an image."
+var image = undefined
 
 // Mongoose
 mongoose.connect("mongodb://localhost/blog");
@@ -27,24 +28,27 @@ var blogPostSchema = new mongoose.Schema ({
   name: String,
   date: String,
   title: String,
-  post: String
+  post: String,
+  image: String
 });
 
 var blogPost = mongoose.model("blogPost", blogPostSchema);
 
-blogPost.create({
-  name: userName,
-  date: today,
-  title: title,
-  post: post
-}, function (err, blogPost) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("New database entry");
-    console.log(blogPost);
-  }
-})
+// Test create user
+// blogPost.create({
+//   name: userName,
+//   date: today,
+//   title: title,
+//   post: post,
+//   image: image
+// }, function (err, blogPost) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("New database entry");
+//     console.log(blogPost);
+//   }
+// })
 
 // Server config
 const port = 8081;

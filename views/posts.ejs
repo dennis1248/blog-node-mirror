@@ -4,7 +4,7 @@
 <div class="content">
   <div class="content_posts">
 
-    <% blogPost.forEach(function(blogPost) { %>
+    <% blogPost.reverse().forEach(function(blogPost) { %>
     <div class="post">
       <table class="info_table">
         <tr>
@@ -21,6 +21,9 @@
           <td colspan="2"> <%= blogPost.post %> </td>
         </tr>
       </table>
+      <% if (blogPost.image != undefined) { %>
+        <img src="<%=blogPost.image%>" alt="image">
+      <%}%>
     </div>
     <% }); %>
 

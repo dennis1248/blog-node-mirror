@@ -148,6 +148,13 @@ a:nth-child(4):hover {
   width: 100%;
 }
 
+.post img {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-bottom: 15px;
+}
+
 .info_table tr th:nth-child(1) {
   text-align: left;
 }
