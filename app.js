@@ -94,8 +94,24 @@ app.post("/login", function (req, res) {
 
 // New post
 app.post("/newpost", function (req, res) {
-  // Put logic here
-  res.redirect("/");
+  var name    = req.body.name,
+      title   = req.body.title,
+      post    = req.body.post,
+      image   = req.body.image;
+
+  if (image === "undefined") {
+    var newPost = {name: name, title: title, post: post, image: undefined};
+  } else {
+    var newPost = {name: name, title: title, post: post, image: image};
+  }
+
+  blogPost.create(newPost, function (err, newMadePost) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/posts");
+    }
+  })
 })
 
 // Start server and listen for GET requests
