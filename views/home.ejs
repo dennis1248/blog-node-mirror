@@ -20,6 +20,8 @@
     </div>
   </div>
 
+<!-- Make sure post actually exists -->
+<% if (lastBlogPost != undefined) { %>
   <div class="home_content">
     <h3 class="home_h3">Latest post</h3>
   </div>
@@ -44,14 +46,14 @@
       <% if (lastBlogPost.image != undefined) { %>  <div class="post_container_div_image"> <% } else { %> <div class="post_container_div"> <% } %>
           <a target="_blank" href="<%=lastBlogPost.link%>"><%=lastBlogPost.link%></a>
       </div>
-      <%}%>
+      <% } %>
       <% if (lastBlogPost.image != undefined) { %>
         <img src="<%=lastBlogPost.image%>" alt="image">
-      <%}%>
+      <% } %>
+      </div>
     </div>
   </div>
-
-</div>
+<% } %>
 <script src="/jumbo.js" charset="utf-8"></script>
 
 <%- include("partials/footer.ejs") %>
