@@ -24,7 +24,8 @@ var blogPostSchema = new mongoose.Schema ({
   date: String,
   title: String,
   post: String,
-  image: String
+  image: String,
+  link: String
 });
 
 var blogPost = mongoose.model("blogPost", blogPostSchema);
@@ -92,12 +93,17 @@ app.post("/newpost", function (req, res) {
   var name    = req.body.name,
       title   = req.body.title,
       post    = req.body.post,
-      image   = req.body.image;
+      image   = req.body.image,
+      link    = req.body.link;
 
-  if (image === "undefined") {
-    var newPost = {name: name, title: title, post: post, date: today, image: undefined};
+  if (image === "" && link === "") {
+    var newPost = {name: name, title: title, post: post, date: today, image: undefined, link: undefined};
+  } else if (image === "") {
+    var newPost = {name: name, title: title, post: post, date: today, image: undefined, link: link};
+  } else if (link === "") {
+    var newPost = {name: name, title: title, post: post, date: today, image: image, link: undefined};
   } else {
-    var newPost = {name: name, title: title, post: post, date: today, image: image};
+    var newPost = {name: name, title: title, post: post, date: today, image: image, link: link};
   }
 
   blogPost.create(newPost, function (err, newMadePost) {
