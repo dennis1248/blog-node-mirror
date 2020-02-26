@@ -1,16 +1,16 @@
-## My personal blog
+### My personal blog
 A simple blog
 
 # Getting it running
-## Usage
+### Usage
 - `npm install`
 - `node app.js`
 
-## Mongodb
+### Mongodb
 Make sure you have Mongodb installed and running on Localhost.
 
 # Examples
-## Pictures
+### Pictures
 
 ![example1](./docs/images/example1.png)
 
