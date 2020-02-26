@@ -8,14 +8,6 @@ const express     = require("express"),
 // Define folder for static files
 app.use(express.static("public"));
 
-// Test data
-var today = new Date(),
-    dd = String(today.getDate()).padStart(2, '0'),
-    mm = String(today.getMonth() + 1).padStart(2, '0'),
-    yyyy = today.getFullYear();
-
-today = mm + '/' + dd + '/' + yyyy;
-
 // Mongoose
 mongoose.connect("mongodb://localhost/blog");
 
@@ -29,22 +21,6 @@ var blogPostSchema = new mongoose.Schema ({
 });
 
 var blogPost = mongoose.model("blogPost", blogPostSchema);
-
-// Test create user
-// blogPost.create({
-//   name: userName,
-//   date: today,
-//   title: title,
-//   post: post,
-//   image: image
-// }, function (err, blogPost) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("New database entry");
-//     console.log(blogPost);
-//   }
-// })
 
 // Server config
 const port = 8081;
@@ -95,6 +71,13 @@ app.post("/newpost", function (req, res) {
       post    = req.body.post,
       image   = req.body.image,
       link    = req.body.link;
+
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+      mm = String(today.getMonth() + 1).padStart(2, '0');
+      yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
 
   if (image === "" && link === "") {
     var newPost = {name: name, title: title, post: post, date: today, image: undefined, link: undefined};
