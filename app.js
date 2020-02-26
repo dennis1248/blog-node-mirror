@@ -29,7 +29,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Home page
 app.get("/", function (req, res) {
-  res.render("home.ejs");
+  blogPost.find({}, function (err, blogPost) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
+    }
+  })
 })
 
 // Posts page
