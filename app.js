@@ -78,6 +78,9 @@ app.post("/newpost", function (req, res) {
       image   = req.body.image,
       link    = req.body.link;
 
+  var newPost = {name: name, title: title, post: post, date: today, image: image, link: link};
+
+  // Set date and insert in newPost
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
       mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -85,14 +88,11 @@ app.post("/newpost", function (req, res) {
 
   today = mm + '/' + dd + '/' + yyyy;
 
-  if (image === "" && link === "") {
-    var newPost = {name: name, title: title, post: post, date: today, image: undefined, link: undefined};
-  } else if (image === "") {
-    var newPost = {name: name, title: title, post: post, date: today, image: undefined, link: link};
-  } else if (link === "") {
-    var newPost = {name: name, title: title, post: post, date: today, image: image, link: undefined};
-  } else {
-    var newPost = {name: name, title: title, post: post, date: today, image: image, link: link};
+  // Loop and check for anything which is not defined
+  for (var i = 0; i < newPost.length; i++) {
+    if (newPost[i].replace(/ /g,"") === "") { // Remove all spaces
+      newPost[i] = undefined;
+    }
   }
 
   blogPost.create(newPost, function (err, newMadePost) {
