@@ -26,30 +26,32 @@
     <h3 class="home_h3">Latest post</h3>
   </div>
   <div class="seperate_color">
-    <div class="post" onclick="window.open('/posts/<%=lastBlogPost._id%>', '_self');">
-      <table class="info_table">
-        <tr>
-          <th> <%= lastBlogPost.name %> </th>
-          <th> <%= lastBlogPost.date %> </th>
-        </tr>
-        <tr>
-          <td colspan="2"> <%= lastBlogPost.title %> </td>
-        </tr>
-      </table>
-      <hr>
-      <table class="post_table">
-        <tr>
-          <td colspan="2"> <%= lastBlogPost.post %> </td>
-        </tr>
-      </table>
-      <% if (lastBlogPost.link) { %>
-      <div class=" <% if (lastBlogPost.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
-          <a target="_blank" href="<%=lastBlogPost.link%>"><%=lastBlogPost.link%></a>
-      </div>
-      <% } %>
-      <% if (lastBlogPost.image) { %>
-        <img src="<%=lastBlogPost.image%>" alt="Error: Image link incorrect">
-      <% } %>
+    <div class="post">
+      <div class="post_header" onclick="window.open('/posts/<%=lastBlogPost._id%>', '_self');">
+        <table class="info_table">
+          <tr>
+            <th> <%= lastBlogPost.name %> </th>
+            <th> <%= lastBlogPost.date %> </th>
+          </tr>
+          <tr>
+            <td colspan="2"> <%= lastBlogPost.title %> </td>
+          </tr>
+        </table>
+        </div>
+        <hr>
+        <table class="post_table">
+          <tr>
+            <td colspan="2"> <%= lastBlogPost.post %> </td>
+          </tr>
+        </table>
+        <% if (lastBlogPost.link) { %>
+        <div class=" <% if (lastBlogPost.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+            <a target="_blank" href="<%=lastBlogPost.link%>"><%=lastBlogPost.link%></a>
+        </div>
+        <% } %>
+        <% if (lastBlogPost.image) { %>
+          <img src="<%=lastBlogPost.image%>" alt="Error: Image link incorrect">
+        <% } %>
       </div>
     </div>
   </div>

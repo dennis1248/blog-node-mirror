@@ -163,7 +163,7 @@ header {
   background-color: white;
 }
 
-.post:hover {
+.post_header:hover {
   cursor: pointer;
 }
 

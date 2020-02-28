@@ -2,15 +2,17 @@
 
 <div class="seperate_color">
   <div class="post">
-    <table class="info_table">
-      <tr>
-        <th> <%= post.name %> </th>
-        <th> <%= post.date %> </th>
-      </tr>
-      <tr>
-        <td colspan="2"> <%= post.title %> </td>
-      </tr>
-    </table>
+    <div class="post_header" onclick="window.open('/posts/<%=post._id%>', '_self');">
+      <table class="info_table">
+        <tr>
+          <th> <%= post.name %> </th>
+          <th> <%= post.date %> </th>
+        </tr>
+        <tr>
+          <td colspan="2"> <%= post.title %> </td>
+        </tr>
+      </table>
+    </div>
     <hr>
     <table class="post_table">
       <tr>
