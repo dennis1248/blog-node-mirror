@@ -4,7 +4,7 @@
   <div class="content_posts">
 
     <% blogPost.reverse().forEach(function(blogPost) { %>
-    <div class="post">
+    <div class="post" onclick="window.open('/posts/<%=blogPost._id%>', '_self');">
       <table class="info_table">
         <tr>
           <th> <%= blogPost.name %> </th>

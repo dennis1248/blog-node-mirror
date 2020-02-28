@@ -12,6 +12,7 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/blog");
 
 var blogPostSchema = new mongoose.Schema ({
+  id: String,
   name: String,
   date: String,
   title: String,
@@ -49,6 +50,16 @@ app.get("/posts", function (req, res) {
   })
 })
 
+app.get("/posts/:id", function (req, res) {
+  blogPost.findById(req.params.id, function (err, foundPost) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("showpost.ejs", {post:foundPost});
+    }
+  })
+})
+
 // About page
 app.get("/projects", function (req, res) {
   res.render("projects.ejs");
@@ -72,7 +83,8 @@ app.post("/login", function (req, res) {
 
 // New post
 app.post("/newpost", function (req, res) {
-  var name    = req.body.name,
+  var id      = req.body._id,
+      name    = req.body.name,
       title   = req.body.title,
       post    = req.body.post,
       image   = req.body.image,
@@ -87,7 +99,7 @@ app.post("/newpost", function (req, res) {
   today = mm + '/' + dd + '/' + yyyy;
 
   // Put everything in an object to make it easier to work with
-  var newPost = {name: name, title: title, post: post, date: today, image: image, link: link};
+  var newPost = {id: id, name: name, title: title, post: post, date: today, image: image, link: link};
 
   blogPost.create(newPost, function (err, newMadePost) {
     if (err) {

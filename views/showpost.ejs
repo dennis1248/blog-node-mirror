@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+
+<div class="seperate_color">
+  <div class="post">
+    <table class="info_table">
+      <tr>
+        <th> <%= post.name %> </th>
+        <th> <%= post.date %> </th>
+      </tr>
+      <tr>
+        <td colspan="2"> <%= post.title %> </td>
+      </tr>
+    </table>
+    <hr>
+    <table class="post_table">
+      <tr>
+        <td colspan="2"> <%= post.post %> </td>
+      </tr>
+    </table>
+    <% if (post.link) { %>
+    <div class=" <% if (post.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+        <a target="_blank" href="<%=post.link%>"><%=post.link%></a>
+    </div>
+    <% } %>
+    <% if (post.image) { %>
+      <img src="<%=post.image%>" alt="Error: Image link incorrect">
+    <% } %>
+    </div>
+  </div>
+
+<%- include("partials/footer.ejs") %>

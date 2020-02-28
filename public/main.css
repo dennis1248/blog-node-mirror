@@ -163,6 +163,10 @@ header {
   background-color: white;
 }
 
+.post:hover {
+  cursor: pointer;
+}
+
 .post table {
   width: 100%;
 }
