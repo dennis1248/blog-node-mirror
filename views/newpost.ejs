@@ -7,16 +7,16 @@
         <input type="text" name="name" placeholder="name" autocomplete="off" required>
         <input type="text" name="title" placeholder="title" autocomplete="off" required>
         <textarea type="text" name="post" placeholder="Your awesome post" required></textarea>
-        <input type="url" name="link" placeholder="link (Optional)">
-        <input type="text" name="image" placeholder="image link (Optional)">
+        <input type="url" name="link" placeholder="link (Optional)" autocomplete="off">
+        <input type="text" name="image" placeholder="image link (Optional)" autocomplete="off" list="images_list">
         <input type="submit" name="post_send" value="Post!">
       </form>
-      <p class="notice">Test images:</p>
-      <ul>
-        <li>/images/placeholder_1.jpg (Cat)</li>
-        <li>/images/placeholder_2.jpg (Penguin)</li>
-        <li>/images/placeholder_3.jpg (Dog)</li>
-      </ul>
+
+      <datalist id="images_list">
+        <option value="/images/placeholder_1.jpg">
+        <option value="/images/placeholder_2.jpg">
+        <option value="/images/placeholder_3.jpg">
+      </datalist>
   </div>
 </div>
 
