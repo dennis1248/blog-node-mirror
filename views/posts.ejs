@@ -21,8 +21,8 @@
         </tr>
       </table>
       <% if (blogPost.link != undefined) { %>
-      <% if (blogPost.image != undefined) { %>  <div class="post_container_div_image"> <% } else { %> <div class="post_container_div"> <% } %>
-          <a target="_blank" href="<%=blogPost.link%>"><%=blogPost.link%></a>
+      <div class=" <% if (blogPost.image != undefined) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+        <a target="_blank" href="<%=blogPost.link%>"><%=blogPost.link%></a>
       </div>
       <%}%>
       <% if (blogPost.image != undefined) { %>
