@@ -78,15 +78,16 @@ app.post("/newpost", function (req, res) {
       image   = req.body.image,
       link    = req.body.link;
 
-  var newPost = {name: name, title: title, post: post, date: today, image: image, link: link};
-
-  // Set date and insert in newPost
+  // Set date
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
       mm = String(today.getMonth() + 1).padStart(2, '0');
       yyyy = today.getFullYear();
 
   today = mm + '/' + dd + '/' + yyyy;
+
+  // Put everything in an object to make it easier to work with
+  var newPost = {name: name, title: title, post: post, date: today, image: image, link: link};
 
   blogPost.create(newPost, function (err, newMadePost) {
     if (err) {
