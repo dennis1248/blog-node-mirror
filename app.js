@@ -88,13 +88,6 @@ app.post("/newpost", function (req, res) {
 
   today = mm + '/' + dd + '/' + yyyy;
 
-  // Loop and check for anything which is not defined
-  for (var i = 0; i < newPost.length; i++) {
-    if (newPost[i].replace(/ /g,"") === "") { // Remove all spaces
-      newPost[i] = undefined;
-    }
-  }
-
   blogPost.create(newPost, function (err, newMadePost) {
     if (err) {
       console.log(err);

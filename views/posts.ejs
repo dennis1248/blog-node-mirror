@@ -20,12 +20,12 @@
           <td colspan="2"> <%= blogPost.post %> </td>
         </tr>
       </table>
-      <% if (blogPost.link != undefined) { %>
-      <div class=" <% if (blogPost.image != undefined) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+      <% if (blogPost.link) { %>
+      <div class=" <% if (blogPost.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
         <a target="_blank" href="<%=blogPost.link%>"><%=blogPost.link%></a>
       </div>
       <%}%>
-      <% if (blogPost.image != undefined) { %>
+      <% if (blogPost.image) { %>
         <img src="<%=blogPost.image%>" alt="Error: Image link incorrect">
       <%}%>
     </div>
