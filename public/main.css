@@ -223,6 +223,17 @@ textarea {
   margin-top: 15px;
 }
 
+/* Edit page */
+#delete_button {
+  background-color: red;
+  float: left !important;
+  color: white;
+}
+
+#delete_button:hover {
+  background-color: #e01a31;
+}
+
 /* Responsive stuff */
 @media screen and (max-width: 1280px) {
   .jumbotron {

@@ -114,7 +114,7 @@ app.post("/newpost", function (req, res) {
   })
 })
 
-// Edit posts
+// Edit posts page
 app.get("/posts/:id/edit", function (req, res) {
   blogPost.findById(req.params.id, function (err, foundPost) {
     if (err) {
@@ -141,6 +141,17 @@ app.put("/posts/:id", function (req, res) {
       console.log(err);
     } else {
       res.redirect("/posts/" + req.params.id)
+    }
+  })
+})
+
+// Delete post
+app.delete("/posts/:id", function (req, res) {
+  blogPost.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/posts");
     }
   })
 })
