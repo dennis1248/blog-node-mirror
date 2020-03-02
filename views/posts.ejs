@@ -18,7 +18,7 @@
       <table class="post_table">
         <tr>
           <td colspan="2">
-            <%= blogPost.post.substring(0, 190).replace(/<(.|\n)*?>/g, "");%>
+            <%= blogPost.post.replace(/<(.|\n)*?>/g, "").substring(0, 190);%>
             <% if (blogPost.post.length >= 190) { %>
               ...
             <% } %>
