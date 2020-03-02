@@ -165,7 +165,7 @@ header {
 
 .post_hover:hover {
   cursor: pointer;
-  background-color: rgba(238, 238, 238, 0.5);
+  background-color: rgba(245, 245, 245, 0.45);
 }
 
 .post_hover_no_color:hover {
