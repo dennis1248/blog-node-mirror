@@ -42,7 +42,7 @@
         <table class="post_table">
           <tr>
             <td colspan="2">
-              <%= lastBlogPost.post.substring(0, 190)%>
+              <%= lastBlogPost.post.substring(0, 190).replace(/<(.|\n)*?>/g, "");%>
               <% if (lastBlogPost.post.length >= 190) { %>
                 ...
               <% } %>
