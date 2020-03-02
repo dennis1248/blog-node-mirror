@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+
+<div class="content">
+  <div id="login_container">
+    <h3>Edit: <%=post.title%> \ <%=post._id%></h3>
+      <form action="/posts/<%=post._id%>?_method=PUT" method="POST">
+        <input type="text" name="name" placeholder="name" value="<%=post.name%>" autocomplete="off" required>
+        <input type="text" name="title" placeholder="title" value="<%=post.title%>" autocomplete="off" required>
+        <textarea type="text" name="post" placeholder="Your awesome post" required><%=post.post%></textarea>
+        <input type="url" name="link" placeholder="link (Optional)" value="<%=post.link%>" autocomplete="off">
+        <input type="text" name="image" placeholder="image link (Optional)" value="<%=post.image%>" autocomplete="off" list="images_list">
+        <input type="submit" name="post_send" value="Post!">
+      </form>
+
+      <datalist id="images_list">
+        <option value="/images/placeholder_1.jpg">
+        <option value="/images/placeholder_2.jpg">
+        <option value="/images/placeholder_3.jpg">
+      </datalist>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

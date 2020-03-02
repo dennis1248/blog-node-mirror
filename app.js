@@ -1,8 +1,9 @@
 // Server config
-const express     = require("express"),
-      app         = express(),
-      mongoose    = require("mongoose"),
-      bodyParser  = require("body-parser");
+const express         = require("express"),
+      methodOverride  = require("method-override")
+      mongoose        = require("mongoose"),
+      bodyParser      = require("body-parser"),
+      app             = express();
 
 
 // Define folder for static files
@@ -27,6 +28,9 @@ var blogPost = mongoose.model("blogPost", blogPostSchema);
 const port = 8081;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Use Method Override and look for _method
+app.use(methodOverride("_method"));
 
 // Home page
 app.get("/", function (req, res) {
@@ -106,6 +110,37 @@ app.post("/newpost", function (req, res) {
       console.log(err);
     } else {
       res.redirect("/posts");
+    }
+  })
+})
+
+// Edit posts
+app.get("/posts/:id/edit", function (req, res) {
+  blogPost.findById(req.params.id, function (err, foundPost) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("edit.ejs", {post:foundPost});
+    }
+  })
+})
+
+// Put the request and update post
+app.put("/posts/:id", function (req, res) {
+  var id      = req.body._id,
+      name    = req.body.name,
+      title   = req.body.title,
+      post    = req.body.post,
+      image   = req.body.image,
+      link    = req.body.link;
+
+  var editPost = {id: id, name: name, title: title, post: post, image: image, link: link};
+
+  blogPost.findByIdAndUpdate(req.params.id, editPost, function (err, updatedBlog) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/posts/" + req.params.id)
     }
   })
 })
