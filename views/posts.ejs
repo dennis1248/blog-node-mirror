@@ -21,7 +21,7 @@
         <tr>
           <td colspan="2">
             <%= blogPost.post.substring(0, 190)%>
-            <% if (blogPost.post.length === 190) { %>
+            <% if (blogPost.post.length >= 190) { %>
               ...
             <% } %>
           </td>
