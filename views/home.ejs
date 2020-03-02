@@ -26,7 +26,7 @@
     <h3 class="home_h3">Latest post</h3>
   </div>
   <div class="seperate_color">
-    <div class="post">
+    <div class="post post_hover_no_color">
       <div class="post_header" onclick="window.open('/posts/<%=lastBlogPost._id%>', '_self');">
         <table class="info_table">
           <tr>
@@ -41,7 +41,12 @@
         <hr>
         <table class="post_table">
           <tr>
-            <td colspan="2"> <%= lastBlogPost.post.substring(0, 190) + "..." %> </td>
+            <td colspan="2">
+              <%= lastBlogPost.post.substring(0, 190)%>
+              <% if (lastBlogPost.post.length >= 190) { %>
+                ...
+              <% } %>
+            </td>
           </tr>
         </table>
         <% if (lastBlogPost.link) { %>

@@ -4,18 +4,16 @@
   <div class="content_posts">
 
     <% blogPost.reverse().forEach(function(blogPost) { %>
-    <div class="post">
-      <div class="post_header" onclick="window.open('/posts/<%=blogPost._id%>', '_self');">
-        <table class="info_table">
-          <tr>
-            <th> <%= blogPost.name %> </th>
-            <th> <%= blogPost.date %> </th>
-          </tr>
-          <tr>
-            <td colspan="2"> <%= blogPost.title %> </td>
-          </tr>
-        </table>
-      </div>
+    <div class="post post_hover" onclick="window.open('/posts/<%=blogPost._id%>', '_self');">
+      <table class="info_table">
+        <tr>
+          <th> <%= blogPost.name %> </th>
+          <th> <%= blogPost.date %> </th>
+        </tr>
+        <tr>
+          <td colspan="2"> <%= blogPost.title %> </td>
+        </tr>
+      </table>
       <hr>
       <table class="post_table">
         <tr>

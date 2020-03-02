@@ -163,7 +163,12 @@ header {
   background-color: white;
 }
 
-.post_header:hover {
+.post_hover:hover {
+  cursor: pointer;
+  background-color: rgba(238, 238, 238, 0.5);
+}
+
+.post_hover_no_color:hover {
   cursor: pointer;
 }
 
