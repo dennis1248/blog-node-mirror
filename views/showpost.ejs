@@ -1,4 +1,5 @@
 <%- include("partials/header.ejs") %>
+<link rel="stylesheet" href="/post_style.css">  <!-- CSS fix posts -->
 
 <div class="seperate_color">
   <div class="post">
@@ -12,19 +13,21 @@
       </tr>
     </table>
     <hr>
-    <table class="post_table">
-      <tr>
-        <td colspan="2"> <%- post.post %> </td>
-      </tr>
-    </table>
-    <% if (post.link) { %>
-    <div class=" <% if (post.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
-        <a target="_blank" href="<%=post.link%>"><%=post.link%></a>
-    </div>
-    <% } %>
-    <% if (post.image) { %>
-      <img src="<%=post.image%>" alt="Error: Image link incorrect">
-    <% } %>
+      <div id="container_post_style">
+        <table class="post_table">
+          <tr>
+            <td colspan="2"> <%- post.post %> </td>
+          </tr>
+        </table>
+        <% if (post.link) { %>
+        <div class=" <% if (post.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+            <a target="_blank" href="<%=post.link%>"><%=post.link%></a>
+        </div>
+        <% } %>
+        <% if (post.image) { %>
+          <img src="<%=post.image%>" alt="Error: Image link incorrect">
+        <% } %>
+      </div>
     </div>
   </div>
 

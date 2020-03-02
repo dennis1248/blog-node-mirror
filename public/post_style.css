@@ -1,0 +1,4 @@
+/* Styling for showpost.ejs */
+#container_post_style hr {
+  width: 100%;
+}
