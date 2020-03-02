@@ -41,7 +41,7 @@
         <hr>
         <table class="post_table">
           <tr>
-            <td colspan="2"> <%= lastBlogPost.post %> </td>
+            <td colspan="2"> <%= lastBlogPost.post.substring(0, 190) + "..." %> </td>
           </tr>
         </table>
         <% if (lastBlogPost.link) { %>

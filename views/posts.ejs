@@ -19,7 +19,12 @@
       <hr>
       <table class="post_table">
         <tr>
-          <td colspan="2"> <%= blogPost.post %> </td>
+          <td colspan="2">
+            <%= blogPost.post.substring(0, 190)%>
+            <% if (true) { %>
+              ...
+            <% } %>
+          </td>
         </tr>
       </table>
       <% if (blogPost.link) { %>
