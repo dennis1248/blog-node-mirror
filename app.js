@@ -58,7 +58,7 @@ app.get("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("/", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
+      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
     }
   })
 })
@@ -107,7 +107,7 @@ app.post("/signup", function (req, res) {
         return res.render("/signup.ejs");
       }
       passport.authenticate("local")(req, res, function() {
-        res.redirect("/home.ejs");
+        res.redirect("/");
       })
     })
   } else {
