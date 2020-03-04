@@ -1,9 +1,13 @@
 // Server config
-const express         = require("express"),
-      methodOverride  = require("method-override")
-      mongoose        = require("mongoose"),
-      bodyParser      = require("body-parser"),
-      app             = express();
+const express                 = require("express"),
+      methodOverride          = require("method-override")
+      mongoose                = require("mongoose"),
+      passport                = require("passport"),
+      bodyParser              = require("body-parser"),
+      User                    = require("./models/user.js")
+      localStrategy           = require("passport-local"),
+      passportLocalMongoose   = require("passport-local-mongoose"),
+      app                     = express();
 
 
 // Define folder for static files
@@ -12,6 +16,27 @@ app.use(express.static("public"));
 // Mongoose
 mongoose.connect("mongodb://localhost/blog");
 
+
+// Server config
+const port = 8081;
+const secret = "This Is My Super Secret Code"
+const allowUserCreation = false;
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(require("express-session")({
+  secret: secret,
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Blog post schema
 var blogPostSchema = new mongoose.Schema ({
   id: String,
   name: String,
@@ -23,11 +48,6 @@ var blogPostSchema = new mongoose.Schema ({
 });
 
 var blogPost = mongoose.model("blogPost", blogPostSchema);
-
-// Server config
-const port = 8081;
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({extended: true}));
 
 // Use Method Override and look for _method
 app.use(methodOverride("_method"));
@@ -72,6 +92,27 @@ app.get("/projects", function (req, res) {
 // TEST new posts
 app.get("/newpost", function (req, res) {
   res.render("newpost.ejs");
+})
+
+// Signup page
+app.get("/signup", function (req, res) {
+  res.render("signup.ejs");
+})
+
+app.post("/signup", function (req, res) {
+  if (allowUserCreation) {
+    User.register(new User({username: req.body.username}), req.body.password, function (err, user) {
+      if (err) {
+        console.log(err);
+        return res.render("/signup.ejs");
+      }
+      passport.authenticate("local")(req, res, function() {
+        res.redirect("/home.ejs");
+      })
+    })
+  } else {
+    res.send("This site is currently configured to not allow signup, in the server config set allowUserCreation to true to allow account creation");
+  }
 })
 
 // Login page
