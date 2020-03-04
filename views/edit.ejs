@@ -18,7 +18,7 @@
         <option value="/images/placeholder_3.jpg">
       </datalist>
 
-      <form action="/posts/<%=post._id%>?_method=DELETE" method="post">
+      <form action="/posts/<%=post._id%>?_method=DELETE" method="post" onsubmit="return confirm('Do you really want to submit the form?');">
         <input type="submit" name="" value="Delete" id="delete_button">
       </form>
   </div>
