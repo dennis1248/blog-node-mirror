@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost/blog");
 // Server config
 const port = 8081;
 const secret = "This Is My Super Secret Code"
-const allowUserCreation = false;
+const allowUserCreation = true;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -58,7 +58,7 @@ app.get("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
+      res.render("/", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
     }
   })
 })
