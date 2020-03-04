@@ -97,17 +97,17 @@ app.get("/newpost", isLoggedIn, function (req, res) {
   res.render("newpost.ejs");
 })
 
-// Signup page
-app.get("/signup", function (req, res) {
-  res.render("signup.ejs");
+// register page
+app.get("/register", function (req, res) {
+  res.render("register.ejs");
 })
 
-app.post("/signup", function (req, res) {
+app.post("/register", function (req, res) {
   if (allowUserCreation) {
     User.register(new User({username: req.body.username}), req.body.password, function (err, user) {
       if (err) {
         console.log(err);
-        return res.render("/signup.ejs");
+        return res.render("/register.ejs");
       }
       passport.authenticate("local")(req, res, function() {
         res.redirect("/");
