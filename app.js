@@ -114,7 +114,7 @@ app.post("/signup", function (req, res) {
       })
     })
   } else {
-    res.send("This site is currently configured to not allow signup, in the server config set allowUserCreation to true to allow account creation");
+    res.send("This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow account creation");
   }
 })
 
