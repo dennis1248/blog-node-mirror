@@ -133,7 +133,6 @@ app.post("/login", passport.authenticate("local", {
 // Check if logged in
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
-    console.log("user is logged in");
     return next();
   }
   res.redirect("/login");
