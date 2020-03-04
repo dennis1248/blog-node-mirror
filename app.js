@@ -20,7 +20,8 @@ mongoose.connect("mongodb://localhost/blog");
 // Server config
 const port = 8081;
 const secret = "This Is My Super Secret Code"
-const allowUserCreation = true;
+const allowUserCreation = false;
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -92,7 +93,7 @@ app.get("/projects", function (req, res) {
 })
 
 // TEST new posts
-app.get("/newpost", function (req, res) {
+app.get("/newpost", isLoggedIn, function (req, res) {
   res.render("newpost.ejs");
 })
 
@@ -129,14 +130,23 @@ app.post("/login", passport.authenticate("local", {
 }), function (req, res) {
 })
 
+// Check if logged in
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    console.log("user is logged in");
+    return next();
+  }
+  res.redirect("/login");
+}
+
 // Logout
-app.get("/logout", function (req, res) {
+app.get("/logout", isLoggedIn, function (req, res) {
   req.logout();
   res.redirect("/");
 })
 
 // New post
-app.post("/newpost", function (req, res) {
+app.post("/newpost", isLoggedIn, function (req, res) {
   var id      = req.body._id,
       name    = req.body.name,
       title   = req.body.title,
@@ -165,7 +175,7 @@ app.post("/newpost", function (req, res) {
 })
 
 // Edit posts page
-app.get("/posts/:id/edit", function (req, res) {
+app.get("/posts/:id/edit", isLoggedIn, function (req, res) {
   blogPost.findById(req.params.id, function (err, foundPost) {
     if (err) {
       console.log(err);
@@ -196,7 +206,7 @@ app.put("/posts/:id", function (req, res) {
 })
 
 // Delete post
-app.delete("/posts/:id", function (req, res) {
+app.delete("/posts/:id", isLoggedIn, function (req, res) {
   blogPost.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       console.log(err);
