@@ -5,7 +5,7 @@ const express                 = require("express"),
       passport                = require("passport"),
       bodyParser              = require("body-parser"),
       User                    = require("./models/user.js")
-      localStrategy           = require("passport-local"),
+      LocalStrategy           = require("passport-local"),
       passportLocalMongoose   = require("passport-local-mongoose"),
       app                     = express();
 
@@ -33,6 +33,8 @@ app.use(require("express-session")({
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -121,9 +123,10 @@ app.get("/login", function (req, res) {
 })
 
 // Login
-app.post("/login", function (req, res) {
-  // Put logic here
-  res.redirect("/");
+app.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login"
+}), function (req, res) {
 })
 
 // New post
@@ -181,7 +184,7 @@ app.put("/posts/:id", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.redirect("/posts/" + req.params.id)
+      res.redirect("/posts/" + req.params.id);
     }
   })
 })
