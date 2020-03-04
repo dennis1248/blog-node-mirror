@@ -129,6 +129,12 @@ app.post("/login", passport.authenticate("local", {
 }), function (req, res) {
 })
 
+// Logout
+app.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+})
+
 // New post
 app.post("/newpost", function (req, res) {
   var id      = req.body._id,
