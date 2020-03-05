@@ -139,7 +139,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // Logout
-app.get("/logout", isLoggedIn, function (req, res) {
+app.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 })
