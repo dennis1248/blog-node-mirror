@@ -228,6 +228,10 @@ textarea {
   margin-top: 15px;
 }
 
+.edit_post {
+  
+}
+
 /* Edit page */
 #delete_button {
   background-color: red;

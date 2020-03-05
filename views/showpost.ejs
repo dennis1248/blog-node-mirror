@@ -28,6 +28,9 @@
           <img src="<%=post.image%>" alt="Error: Image link incorrect">
         <% } %>
       </div>
+      <% if (isLoggedIn) { %>
+        <a class="edit_post" href="/posts/<%=post._id%>/edit">Edit</a>
+      <% } %>
     </div>
   </div>
 

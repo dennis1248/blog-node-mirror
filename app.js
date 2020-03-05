@@ -61,7 +61,7 @@ app.get("/", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
+      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1], isLoggedIn: req.isAuthenticated()}); // Pass last blog post
     }
   })
 })
@@ -72,7 +72,7 @@ app.get("/posts", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("posts.ejs", {blogPost:blogPost});
+      res.render("posts.ejs", {blogPost:blogPost, isLoggedIn: req.isAuthenticated()});
     }
   })
 })
@@ -82,24 +82,24 @@ app.get("/posts/:id", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("showpost.ejs", {post:foundPost});
+      res.render("showpost.ejs", {post:foundPost, isLoggedIn: req.isAuthenticated()});
     }
   })
 })
 
 // About page
 app.get("/projects", function (req, res) {
-  res.render("projects.ejs");
+  res.render("projects.ejs", {isLoggedIn: req.isAuthenticated()});
 })
 
 // TEST new posts
 app.get("/newpost", isLoggedIn, function (req, res) {
-  res.render("newpost.ejs");
+  res.render("newpost.ejs", {isLoggedIn: req.isAuthenticated()});
 })
 
 // register page
 app.get("/register", function (req, res) {
-  res.render("register.ejs");
+  res.render("register.ejs", {isLoggedIn: req.isAuthenticated()});
 })
 
 app.post("/register", function (req, res) {
@@ -107,7 +107,7 @@ app.post("/register", function (req, res) {
     User.register(new User({username: req.body.username}), req.body.password, function (err, user) {
       if (err) {
         console.log(err);
-        return res.render("/register.ejs");
+        return res.redirect("/register.ejs");
       }
       passport.authenticate("local")(req, res, function() {
         res.redirect("/");
@@ -120,7 +120,7 @@ app.post("/register", function (req, res) {
 
 // Login page
 app.get("/login", function (req, res) {
-  res.render("login.ejs");
+  res.render("login.ejs", {isLoggedIn: req.isAuthenticated()});
 })
 
 // Login
@@ -179,7 +179,7 @@ app.get("/posts/:id/edit", isLoggedIn, function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("edit.ejs", {post:foundPost});
+      res.render("edit.ejs", {post:foundPost, isLoggedIn: req.isAuthenticated()});
     }
   })
 })
