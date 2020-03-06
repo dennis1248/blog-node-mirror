@@ -49,12 +49,12 @@ header {
 
 .header_left {
   float: left;
-  width: 50%;
+  width: 45%;
 }
 
 .header_right {
   float: right;
-  width: 50%;
+  width: 55%;
   text-align: right;
 }
 
