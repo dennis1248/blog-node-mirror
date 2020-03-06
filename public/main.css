@@ -231,6 +231,7 @@ header {
   border-radius: 4px;
   text-decoration: none;
   color: rgba(195, 195, 195);
+  background-color: white;
 }
 
 #new_post_link:hover {

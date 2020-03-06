@@ -1,12 +1,12 @@
 <%- include("partials/header.ejs") %>
 
+<% if (isLoggedIn) { %>
+  <div id="new_post_container" class="seperate_color">
+    <a id="new_post_link" href="/newpost">Create a new post!</a>
+  </div>
+<% } %>
 <div class="content">
   <div class="content_posts">
-    <% if (isLoggedIn) { %>
-      <div id="new_post_container">
-        <a id="new_post_link" href="/newpost">Create a new post!</a>
-      </div>
-    <% } %>
     <% blogPost.reverse().forEach(function(blogPost) { %>
     <div class="post post_hover" onclick="window.open('/posts/<%=blogPost._id%>', '_self');">
       <table class="info_table">
