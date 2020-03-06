@@ -17,7 +17,7 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/blog");
 
 
-// Server config
+// Server Settings
 const port = 8081;
 const secret = "This Is My Super Secret Code"
 const allowUserCreation = false;
@@ -25,13 +25,13 @@ const allowUserCreation = false;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Passport
 app.use(require("express-session")({
   secret: secret,
   resave: false,
   saveUninitialized: false
 }));
 
-// Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
