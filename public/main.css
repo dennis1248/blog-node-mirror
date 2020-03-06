@@ -218,6 +218,31 @@ header {
   width: 88%;
 }
 
+/* Show post */
+#edit_div_container {
+  height: 1.5em;
+}
+
+#edit_button_div {
+  height: 2.70em;
+  width: 85px;
+  float: right;
+}
+
+.edit_button {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  padding: 10px;
+  text-decoration: none;
+  box-shadow: 0px 0px 4px 1px #eee;
+  cursor: pointer;
+  color: black;
+}
+
+.edit_button:hover {
+  background-color: rgba(245, 245, 245, 0.9);
+}
+
 /* Post page */
 textarea {
   height: 10em;
@@ -229,7 +254,7 @@ textarea {
 }
 
 .edit_post {
-  
+
 }
 
 /* Edit page */
@@ -328,6 +353,7 @@ textarea {
     width: 95%;
   }
 
+  /* Posts */
   .post {
     width: 450px;
     padding: 10px;
@@ -339,6 +365,11 @@ textarea {
 
   .post hr {
     width: 82%;
+  }
+
+  /* edit post buttons */
+  #edit_div_container {
+    margin-bottom: 15px;
   }
 
   /* Create account */
