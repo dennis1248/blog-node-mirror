@@ -17,3 +17,7 @@ Make sure you have Mongodb installed and running on Localhost.
 ![example1](./docs/images/example2.png)
 
 ![example1](./docs/images/example3.png)
+
+![example1](./docs/images/example4.png)
+
+![example1](./docs/images/example5.png)
