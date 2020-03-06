@@ -218,6 +218,28 @@ header {
   width: 88%;
 }
 
+#new_post_container {
+  text-align: center;
+  margin: auto;
+  margin-top: 25px;
+}
+
+#new_post_link {
+  border: 1px solid #eee;
+  padding: 10px;
+  box-shadow: 1px 0px 2px #a8a8a8;
+  border-radius: 4px;
+  text-decoration: none;
+  color: rgba(195, 195, 195);
+}
+
+#new_post_link:hover {
+  background-color: #a8a8a8;
+  border: 0;
+  box-shadow: 1px 0px 5px #a8a8a8;
+  color: white;
+}
+
 /* Show post */
 #edit_div_container {
   height: 1.5em;
