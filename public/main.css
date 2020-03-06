@@ -248,18 +248,19 @@ header {
 
 #edit_button_div {
   height: 2.70em;
-  width: 85px;
+  width: 95px;
   float: right;
 }
 
 .edit_button {
   border-radius: 4px;
   border: 1px solid #eee;
-  padding: 10px;
+  padding: 8px 10px 8px 10px;
   text-decoration: none;
   box-shadow: 0px 0px 4px 1px #eee;
   cursor: pointer;
   color: black;
+  font-size: 1.5em;
 }
 
 .edit_button:hover {

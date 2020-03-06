@@ -32,7 +32,7 @@
         <form id="send_delete" action="/posts/<%=post._id%>?_method=DELETE" method="post"></form>
         <div id="edit_div_container">
           <div id="edit_button_div">
-            <a class="edit_button" href="/posts/<%=post._id%>/edit">✂️</a>
+            <a class="edit_button" href="/posts/<%=post._id%>/edit">✎</a>
             <span class="edit_button" onclick="var i = confirm('Delete this post?'); if (i) { document.getElementById('send_delete').submit(); }">️🗑️</span>
           </div>
         </div>
