@@ -248,7 +248,7 @@ header {
 
 #edit_button_div {
   height: 2.70em;
-  width: 95px;
+  width: 98px;
   float: right;
 }
 
@@ -275,10 +275,6 @@ textarea {
   border: 0;
   border-bottom: 1px solid #eee;
   margin-top: 15px;
-}
-
-.edit_post {
-
 }
 
 /* Edit page */
