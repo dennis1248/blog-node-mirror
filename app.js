@@ -4,7 +4,7 @@ const express                 = require("express"),
       mongoose                = require("mongoose"),
       passport                = require("passport"),
       bodyParser              = require("body-parser"),
-      LocalStrategy           = require("passport-local"),
+      localStrategy           = require("passport-local"),
       passportLocalMongoose   = require("passport-local-mongoose"),
       app                     = express();
 
@@ -38,7 +38,7 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
