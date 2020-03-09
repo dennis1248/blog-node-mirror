@@ -4,10 +4,13 @@ const express                 = require("express"),
       mongoose                = require("mongoose"),
       passport                = require("passport"),
       bodyParser              = require("body-parser"),
-      User                    = require("./models/user.js")
       LocalStrategy           = require("passport-local"),
       passportLocalMongoose   = require("passport-local-mongoose"),
       app                     = express();
+
+// Schemas
+const User      = require("./models/user.js"),
+      blogPost  = require("./models/blogPost.js");
 
 
 // Define folder for static files
@@ -38,19 +41,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-// Blog post schema
-var blogPostSchema = new mongoose.Schema ({
-  id: String,
-  name: String,
-  date: String,
-  title: String,
-  post: String,
-  image: String,
-  link: String
-});
-
-var blogPost = mongoose.model("blogPost", blogPostSchema);
 
 // Use Method Override and look for _method
 app.use(methodOverride("_method"));
