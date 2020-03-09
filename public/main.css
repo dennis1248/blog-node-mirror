@@ -82,6 +82,13 @@ input[type=submit] {
   cursor: pointer;
 }
 
+/* Error page */
+#error_message {
+  text-align: center;
+  margin-top: 45px;
+  width: 400px;
+  margin: auto;
+}
 
 /* Home */
 .home_content {
