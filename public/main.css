@@ -84,7 +84,6 @@ input[type=submit] {
 
 /* Error page */
 #error_message {
-  padding-top: 20px;
   width: 700px;
   margin: auto;
 }
@@ -398,7 +397,7 @@ textarea {
   #error_message {
     width: 400px;
     text-align: center;
-    padding-top: 35px;
+    margin: -18px auto -18px auto;
   }
 
   textarea {
