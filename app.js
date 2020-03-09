@@ -23,7 +23,7 @@ mongoose.connect("mongodb://localhost/blog");
 // Server Settings
 const port = 8081;
 const secret = "This Is My Super Secret Code"
-const allowUserCreation = true;
+const allowUserCreation = false;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
