@@ -9,7 +9,7 @@ const express                 = require("express"),
       app                     = express();
 
 // Schemas
-const User      = require("./models/user.js"),
+const user      = require("./models/user.js"),
       blogPost  = require("./models/blogPost.js");
 
 
@@ -23,7 +23,7 @@ mongoose.connect("mongodb://localhost/blog");
 // Server Settings
 const port = 8081;
 const secret = "This Is My Super Secret Code"
-const allowUserCreation = false;
+const allowUserCreation = true;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -38,9 +38,9 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new localStrategy(user.authenticate()));
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 // Use Method Override and look for _method
 app.use(methodOverride("_method"));
@@ -94,7 +94,7 @@ app.get("/register", function (req, res) {
 
 app.post("/register", function (req, res) {
   if (allowUserCreation) {
-    User.register(new User({username: req.body.username}), req.body.password, function (err, user) {
+    user.register(new user({username: req.body.username}), req.body.password, function (err, user) {
       if (err) {
         console.log(err);
         return res.redirect("/register.ejs");
