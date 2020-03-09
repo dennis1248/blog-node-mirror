@@ -1,8 +1,14 @@
 <%- include("partials/header.ejs") %>
 
 <% if (isLoggedIn) { %>
-  <div id="new_post_container" class="seperate_color">
+  <div class="message seperate_color">
     <a id="new_post_link" href="/newpost">Create a new post!</a>
+  </div>
+<% } %>
+
+<% if (blogPost.length < 1) { %>
+  <div class="message seperate_color">
+    <p>Nobody here but us chickens!</p>
   </div>
 <% } %>
 <div class="content">
@@ -40,6 +46,9 @@
     </div>
     <% }); %>
 
+    <% if (blogPost.length < 1) { %>
+      test
+    <% } %>
   </div>
 </div>
 
