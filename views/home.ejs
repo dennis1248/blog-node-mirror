@@ -25,39 +25,39 @@
   <div class="home_content">
     <h3 class="home_h3">Latest post</h3>
   </div>
-  <div class="seperate_color">
-    <div class="post post_hover_no_color" onclick="window.open('/posts/<%=lastBlogPost._id%>', '_self');">
-      <div class="post_header">
-        <table class="info_table">
-          <tr>
-            <th> <%= lastBlogPost.name %> </th>
-            <th> <%= lastBlogPost.date %> </th>
-          </tr>
-          <tr>
-            <td colspan="2"> <%= lastBlogPost.title %> </td>
-          </tr>
-        </table>
-        </div>
-        <hr>
-        <table class="post_table">
-          <tr>
-            <td colspan="2">
-              <%= lastBlogPost.post.substring(0, 190).replace(/<(.|\n)*?>/g, "");%>
-              <% if (lastBlogPost.post.length >= 190) { %>
-                ...
-              <% } %>
-            </td>
-          </tr>
-        </table>
-        <% if (lastBlogPost.link) { %>
-        <div class=" <% if (lastBlogPost.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
-            <a target="_blank" href="<%=lastBlogPost.link%>"><%=lastBlogPost.link%></a>
-        </div>
-        <% } %>
-        <% if (lastBlogPost.image) { %>
-          <img src="<%=lastBlogPost.image%>" alt="Error: Image link incorrect">
-        <% } %>
+</div>
+<div class="seperate_color">
+  <div class="post post_hover_no_color" onclick="window.open('/posts/<%=lastBlogPost._id%>', '_self');">
+    <div class="post_header">
+      <table class="info_table">
+        <tr>
+          <th> <%= lastBlogPost.name %> </th>
+          <th> <%= lastBlogPost.date %> </th>
+        </tr>
+        <tr>
+          <td colspan="2"> <%= lastBlogPost.title %> </td>
+        </tr>
+      </table>
       </div>
+      <hr>
+      <table class="post_table">
+        <tr>
+          <td colspan="2">
+            <%= lastBlogPost.post.substring(0, 190).replace(/<(.|\n)*?>/g, "");%>
+            <% if (lastBlogPost.post.length >= 190) { %>
+              ...
+            <% } %>
+          </td>
+        </tr>
+      </table>
+      <% if (lastBlogPost.link) { %>
+      <div class=" <% if (lastBlogPost.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+          <a target="_blank" href="<%=lastBlogPost.link%>"><%=lastBlogPost.link%></a>
+      </div>
+      <% } %>
+      <% if (lastBlogPost.image) { %>
+        <img src="<%=lastBlogPost.image%>" alt="Error: Image link incorrect">
+      <% } %>
     </div>
   </div>
 <% } %>
