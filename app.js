@@ -70,9 +70,12 @@ app.get("/posts", function (req, res) {
 
 app.get("/posts/:id", function (req, res) {
   blogPost.findById(req.params.id, function (err, foundPost) {
+    if (foundPost === null) {
+      res.render("error.ejs", {error:"Error: This post does not exist or it does no longer exist", isLoggedIn: req.isAuthenticated()});
+    }
     if (err) {
       console.log(err);
-      res.render("error.ejs", {error:"Error: This post does not exist or it does no longer exist", isLoggedIn: req.isAuthenticated()})
+      res.render("error.ejs", {error:"Error: The given ID is wrong or another error occurred", isLoggedIn: req.isAuthenticated()})
     } else {
       res.render("showpost.ejs", {post:foundPost, isLoggedIn: req.isAuthenticated()});
     }
@@ -92,9 +95,12 @@ app.get("/projects", function (req, res) {
 
 app.get("/projects/:id", function (req, res) {
   projectPost.findById(req.params.id, function (err, foundProject) {
+    if (foundProject === null) {
+      res.render("error.ejs", {error:"Error: This project does not exist or it does no longer exist", isLoggedIn: req.isAuthenticated()});
+    }
     if (err) {
       console.log(err);
-      res.render("error.ejs", {error:"Error: This project does not exist or it does no longer exist", isLoggedIn: req.isAuthenticated()});
+      res.render("error.ejs", {error:"Error: The given ID is wrong or another error occurred", isLoggedIn: req.isAuthenticated()});
     } else {
       res.render("showproject.ejs", {project:foundProject, isLoggedIn: req.isAuthenticated()});
     }
