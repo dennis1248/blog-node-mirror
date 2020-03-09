@@ -1,0 +1,43 @@
+<%- include("partials/header.ejs") %>
+<link rel="stylesheet" href="/post_style.css">  <!-- CSS fix posts -->
+
+<div class="seperate_color">
+  <div class="post">
+    <table class="info_table">
+      <tr>
+        <th> <%= project.name %> </th>
+        <th> <%= project.date %> </th>
+      </tr>
+      <tr>
+        <td colspan="2"> <%= project.title %> </td>
+      </tr>
+    </table>
+    <hr>
+      <div id="container_post_style">
+        <table class="post_table">
+          <tr>
+            <td colspan="2"> <%- project.post %> </td>
+          </tr>
+        </table>
+        <% if (project.link) { %>
+        <div class=" <% if (project.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+            <a target="_blank" href="<%=project.link%>"><%=project.link%></a>
+        </div>
+        <% } %>
+        <% if (project.image) { %>
+          <img src="<%=project.image%>" alt="Error: Image link incorrect">
+        <% } %>
+      </div>
+      <% if (isLoggedIn) { %>
+        <form id="send_delete" action="/projects/<%=project._id%>?_method=DELETE" method="post"></form>
+        <div id="edit_div_container">
+          <div id="edit_button_div">
+            <a class="edit_button" href="/projects/<%=project._id%>/edit"></a>
+            <span class="edit_button" onclick="var i = confirm('Do you really want to remove \'<%=project.title%>\'?'); if (i) { document.getElementById('send_delete').submit(); }"></span>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+<%- include("partials/footer.ejs") %>

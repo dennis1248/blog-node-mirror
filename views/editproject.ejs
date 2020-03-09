@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+
+<div class="content">
+  <div id="login_container">
+    <h3>Edit: <%=project.title%> \ <%=project._id%></h3>
+      <form action="/projects/<%=project._id%>?_method=PUT" method="POST">
+        <input type="text" name="name" placeholder="name" value="<%=project.name%>" autocomplete="off" required>
+        <input type="text" name="title" placeholder="title" value="<%=project.title%>" autocomplete="off" required>
+        <textarea type="text" name="post" placeholder="Your awesome project" required><%=project.post%></textarea>
+        <input type="url" name="link" placeholder="link (Optional)" value="<%=project.link%>" autocomplete="off">
+        <input type="text" name="image" placeholder="image link (Optional)" value="<%=project.image%>" autocomplete="off" list="images_list">
+        <input type="submit" name="post_send" value="Post!">
+      </form>
+
+      <datalist id="images_list">
+        <option value="/images/placeholder_1.jpg">
+        <option value="/images/placeholder_2.jpg">
+        <option value="/images/placeholder_3.jpg">
+      </datalist>
+
+      <form action="/projects/<%=project._id%>?_method=DELETE" method="post" onsubmit="return confirm('Do you really want to remove \'<%=project.title%>\'?');">
+        <input type="submit" name="" value="Delete" id="delete_button">
+      </form>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

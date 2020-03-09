@@ -1,9 +1,46 @@
 <%- include("partials/header.ejs") %>
 
-  <div class="content">
-    <div id="about_container">
-      <p></p>
-    </div>
+<% if (isLoggedIn) { %>
+  <div id="new_post_container" class="seperate_color">
+    <a id="new_post_link" href="/newpost">Create a new project!</a>
   </div>
+<% } %>
+<div class="content">
+  <div class="content_posts">
+    <% projectPost.reverse().forEach(function(projectPost) { %>
+    <div class="post post_hover" onclick="window.open('/projects/<%=projectPost._id%>', '_self');">
+      <table class="info_table">
+        <tr>
+          <th> <%= projectPost.name %> </th>
+          <th> <%= projectPost.date %> </th>
+        </tr>
+        <tr>
+          <td colspan="2"> <%= projectPost.title %> </td>
+        </tr>
+      </table>
+      <hr>
+      <table class="post_table">
+        <tr>
+          <td colspan="2">
+            <%= projectPost.post.replace(/<(.|\n)*?>/g, "").substring(0, 190);%>
+            <% if (projectPost.post.length >= 190) { %>
+              ...
+            <% } %>
+          </td>
+        </tr>
+      </table>
+      <% if (projectPost.link) { %>
+      <div class=" <% if (projectPost.image) { %>  post_container_div_image <% } else { %> post_container_div <% } %> ">
+        <a target="_blank" href="<%=projectPost.link%>"><%=projectPost.link%></a>
+      </div>
+      <%}%>
+      <% if (projectPost.image) { %>
+        <img src="<%=projectPost.image%>" alt="Error: Image link incorrect">
+      <%}%>
+    </div>
+    <% }); %>
+
+  </div>
+</div>
 
 <%- include("partials/footer.ejs") %>

@@ -9,8 +9,9 @@ const express                 = require("express"),
       app                     = express();
 
 // Schemas
-const user      = require("./models/user.js"),
-      blogPost  = require("./models/blogPost.js");
+const user          = require("./models/user.js"),
+      blogPost      = require("./models/blogPost.js"),
+      projectPost   = require("./models/projectPost.js");
 
 
 // Define folder for static files
@@ -77,9 +78,25 @@ app.get("/posts/:id", function (req, res) {
   })
 })
 
-// About page
+// Projects page
 app.get("/projects", function (req, res) {
-  res.render("projects.ejs", {isLoggedIn: req.isAuthenticated()});
+  projectPost.find({}, function (err, projectPost) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("projects.ejs", {projectPost:projectPost, isLoggedIn: req.isAuthenticated()});
+    }
+  })
+})
+
+app.get("/projects/:id", function (req, res) {
+  projectPost.findById(req.params.id, function (err, foundProject) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("showproject.ejs", {project:foundProject, isLoggedIn: req.isAuthenticated()});
+    }
+  })
 })
 
 // TEST new posts
@@ -163,6 +180,77 @@ app.post("/newpost", isLoggedIn, function (req, res) {
   })
 })
 
+// New project
+app.post("/newproject", isLoggedIn, function (req, res) {
+  var id      = req.body._id,
+      name    = req.body.name,
+      title   = req.body.title,
+      post    = req.body.post,
+      image   = req.body.image,
+      link    = req.body.link;
+
+  // Set date
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+      mm = String(today.getMonth() + 1).padStart(2, '0');
+      yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+
+  // Put everything in an object to make it easier to work with
+  var newProject = {id: id, name: name, title: title, post: post, date: today, image: image, link: link};
+
+  projectPost.create(newProject, function (err, newMadeProject) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/projects");
+    }
+  })
+})
+
+// Edit project page
+app.get("/projects/:id/edit", isLoggedIn, function (req, res) {
+  projectPost.findById(req.params.id, function (err, foundProject) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("editproject.ejs", {project:foundProject, isLoggedIn: req.isAuthenticated()});
+    }
+  })
+})
+
+// Put the request and update project
+app.put("/projects/:id", isLoggedIn, function (req, res) {
+  var id      = req.body._id,
+      name    = req.body.name,
+      title   = req.body.title,
+      post    = req.body.post,
+      image   = req.body.image,
+      link    = req.body.link;
+
+  var editProject = {id: id, name: name, title: title, post: post, image: image, link: link};
+
+  projectPost.findByIdAndUpdate(req.params.id, editProject, function (err, updatedBlog) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/projects/" + req.params.id);
+    }
+  })
+})
+
+// Delete project
+app.delete("/projects/:id", isLoggedIn, function (req, res) {
+  projectPost.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/projects");
+    }
+  })
+})
+
 // Edit posts page
 app.get("/posts/:id/edit", isLoggedIn, function (req, res) {
   blogPost.findById(req.params.id, function (err, foundPost) {
@@ -175,7 +263,7 @@ app.get("/posts/:id/edit", isLoggedIn, function (req, res) {
 })
 
 // Put the request and update post
-app.put("/posts/:id", function (req, res) {
+app.put("/posts/:id", isLoggedIn, function (req, res) {
   var id      = req.body._id,
       name    = req.body.name,
       title   = req.body.title,
