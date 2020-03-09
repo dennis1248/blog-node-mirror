@@ -244,27 +244,41 @@ header {
 /* Show post */
 #edit_div_container {
   height: 1.5em;
+  margin-bottom: 10px
 }
 
 #edit_button_div {
   height: 2.70em;
-  width: 98px;
+  width: 100px;
   float: right;
 }
 
 .edit_button {
+  display: inline-block;
   border-radius: 4px;
   border: 1px solid #eee;
-  padding: 8px 10px 8px 10px;
-  text-decoration: none;
+  height: 100%;
+  width: 45%;
   box-shadow: 0px 0px 4px 1px #eee;
   cursor: pointer;
-  color: black;
-  font-size: 1.5em;
+  background: url("/images/edit.png") no-repeat;
+  background-size: 65%;
+  background-position: center center;
+}
+
+.edit_button:nth-child(2) {
+  background: url("/images/delete.png") no-repeat;
+  background-size: 65%;
+  background-position: center center;
 }
 
 .edit_button:hover {
   background-color: rgba(245, 245, 245, 0.9);
+}
+
+.edit_icon {
+  width: 20px;
+  height: auto;
 }
 
 /* Post page */
