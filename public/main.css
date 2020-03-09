@@ -77,6 +77,12 @@ header {
   user-select: none;
 }
 
+/* Overall */
+input[type=submit] {
+  cursor: pointer;
+}
+
+
 /* Home */
 .home_content {
   width: 100%;
