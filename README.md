@@ -9,15 +9,18 @@ A simple blog
 ### Mongodb
 Make sure you have Mongodb installed and running on Localhost.
 
+### Credit images
+See `public/images/image_sources`
+
 # Examples
 ### Pictures
 
 ![example1](./docs/images/example1.png)
 
-![example1](./docs/images/example2.png)
+![example2](./docs/images/example2.png)
 
-![example1](./docs/images/example3.png)
+![example3](./docs/images/example3.png)
 
-![example1](./docs/images/example4.png)
+![example4](./docs/images/example4.png)
 
-![example1](./docs/images/example5.png)
+![example5](./docs/images/example5.png)
