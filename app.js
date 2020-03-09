@@ -101,7 +101,12 @@ app.get("/projects/:id", function (req, res) {
   })
 })
 
-// TEST new posts
+// new project
+app.get("/newproject", isLoggedIn, function (req, res) {
+  res.render("newproject.ejs", {isLoggedIn: req.isAuthenticated()});
+})
+
+// new posts
 app.get("/newpost", isLoggedIn, function (req, res) {
   res.render("newpost.ejs", {isLoggedIn: req.isAuthenticated()});
 })
@@ -123,7 +128,7 @@ app.post("/register", function (req, res) {
       })
     })
   } else {
-    res.render("error.ejs", {error:"This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow user account creation.", isLoggedIn: req.isAuthenticated()}) 
+    res.render("error.ejs", {error:"This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow user account creation.", isLoggedIn: req.isAuthenticated()})
   }
 })
 
