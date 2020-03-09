@@ -84,9 +84,8 @@ input[type=submit] {
 
 /* Error page */
 #error_message {
-  text-align: center;
-  margin-top: 45px;
-  width: 400px;
+  padding-top: 20px;
+  width: 700px;
   margin: auto;
 }
 
@@ -394,6 +393,12 @@ textarea {
 
   #login_container form input[type=text], #login_container form input[type=password], #login_container form input[type=url] {
     width: 95%;
+  }
+
+  #error_message {
+    width: 400px;
+    text-align: center;
+    padding-top: 35px;
   }
 
   textarea {
