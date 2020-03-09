@@ -33,7 +33,7 @@
         <div id="edit_div_container">
           <div id="edit_button_div">
             <a class="edit_button" href="/posts/<%=post._id%>/edit"></a>
-            <span class="edit_button" onclick="var i = confirm('Delete this post?'); if (i) { document.getElementById('send_delete').submit(); }"></span>
+            <span class="edit_button" onclick="var i = confirm('Do you really want to remove \'<%=post.title%>\'?'); if (i) { document.getElementById('send_delete').submit(); }"></span>
           </div>
         </div>
       <% } %>
