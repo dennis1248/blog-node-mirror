@@ -123,7 +123,7 @@ app.post("/register", function (req, res) {
       })
     })
   } else {
-    res.send("This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow account creation");
+    res.render("error.ejs", {error:"This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow user account creation.", isLoggedIn: req.isAuthenticated()}) 
   }
 })
 
