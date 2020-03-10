@@ -9,14 +9,14 @@
         <th> <%= post.date %> </th>
       </tr>
       <tr>
-        <td colspan="2"> <%= post.title %> </td>
+        <th colspan="2"> <%= post.title %> </th>
       </tr>
     </table>
     <hr>
       <div id="container_post_style">
         <table class="post_table">
           <tr>
-            <th colspan="2"> <%- post.post %> </th>
+            <td colspan="2"> <%- post.post %> </td>
           </tr>
         </table>
         <% if (post.link) { %>

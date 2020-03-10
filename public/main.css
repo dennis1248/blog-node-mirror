@@ -10,10 +10,7 @@
   src: url("/fonts/DejaVuSerif-Bold.ttf");
 }
 
-/*
-Currently not used
-
- @font-face {
+/* @font-face {
   font-family: "DejaVuSerif-Italic";
   font-weight: normal;
   font-style: italic;
