@@ -171,6 +171,10 @@ input[type=submit] {
   padding: 10px 15px 10px 15px;
 }
 
+form input, form textarea {
+  font-size: 15px;
+}
+
 #jumbo_btn_left {
   text-align: left;
   float: left;
