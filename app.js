@@ -6,6 +6,7 @@ const express                 = require("express"),
       bodyParser              = require("body-parser"),
       localStrategy           = require("passport-local"),
       passportLocalMongoose   = require("passport-local-mongoose"),
+      flash                   = require("connect-flash"),
       app                     = express();
 
 // Schemas
@@ -38,6 +39,7 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 passport.use(new localStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
@@ -142,14 +144,21 @@ app.post("/register", function (req, res) {
 
 // Login page
 app.get("/login", function (req, res) {
-  res.render("login.ejs", {isLoggedIn: req.isAuthenticated()});
+  res.render("login.ejs", {messages: req.flash('info'), isLoggedIn: req.isAuthenticated()});
 })
 
 // Login
 app.post("/login", passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/login"
+  failureRedirect: "/loginfail",
+  failureFlash: true
 }), function (req, res) {
+})
+
+// login fail
+app.get("/loginfail", function (req, res) {
+  req.flash("info", "Login Incorrect");
+  res.redirect("/login");
 })
 
 // Check if logged in

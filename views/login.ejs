@@ -10,6 +10,9 @@
       </form>
 
       <p id="create_acc_link">Don't have an account? <span><a href="/register">Create one!</a></span></p>
+      <% if (messages) { %>
+        <p class="panic_error"><%= messages %></p>
+      <% } %>
   </div>
 </div>
 
