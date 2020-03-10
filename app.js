@@ -144,7 +144,7 @@ app.post("/register", function (req, res) {
 
 // Login page
 app.get("/login", function (req, res) {
-  res.render("login.ejs", {messages: req.flash('info'), isLoggedIn: req.isAuthenticated()});
+  res.render("login.ejs", {messages: req.flash("info"), isLoggedIn: req.isAuthenticated()});
 })
 
 // Login
