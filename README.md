@@ -3,8 +3,9 @@ A simple blog
 
 # Getting it running
 ### Usage
-- `npm install`
-- `node app.js`
+1. Check server settings at line 24 in app.js
+2. `npm install`
+3. `node app.js`
 
 ### Mongodb
 Make sure you have Mongodb installed and running on Localhost.
