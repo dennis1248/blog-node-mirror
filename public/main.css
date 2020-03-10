@@ -1,10 +1,32 @@
-@@font-face {
-  font-family: "DejaVuSerifCondensed";
-  src: url("/fonts/DejaVuSerifCondensed.ttf");
+@font-face {
+  font-family: "DejaVuSerif";
+  font-weight: normal;
+  src: url("/fonts/DejaVuSerif.ttf");
 }
 
-* {
-  font-family: "DejaVuSerifCondensed";
+@font-face {
+  font-family: "DejaVuSerif-Bold";
+  font-weight: bold;
+  src: url("/fonts/DejaVuSerif-Bold.ttf");
+}
+
+/*
+Currently not used
+
+ @font-face {
+  font-family: "DejaVuSerif-Italic";
+  font-weight: normal;
+  font-style: italic;
+  src: url("/fonts/DejaVuSerif-Italic.ttf");
+} */
+
+/* Font config */
+h1, h2, h3, h4, h5, th  {
+  font-family: "DejaVuSerif-Bold";
+}
+
+p, a, span, ul, td {
+  font-family: "DejaVuSerif";
 }
 
 body {
@@ -228,7 +250,7 @@ input[type=submit] {
   text-align: right;
 }
 
-.info_table tr:nth-child(2) td {
+.info_table tr:nth-child(2) th {
   padding: 30px 40px 0 40px;
   font-weight: bold;
 }
