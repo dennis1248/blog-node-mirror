@@ -4,6 +4,7 @@ const express                 = require("express"),
       mongoose                = require("mongoose"),
       passport                = require("passport"),
       bodyParser              = require("body-parser"),
+      favicon                 = require("serve-favicon"),
       localStrategy           = require("passport-local"),
       passportLocalMongoose   = require("passport-local-mongoose"),
       flash                   = require("connect-flash"),
@@ -17,6 +18,9 @@ const user          = require("./models/user.js"),
 
 // Define folder for static files
 app.use(express.static("public"));
+
+// Favicon
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // Mongoose
 mongoose.connect("mongodb://localhost/blog");
