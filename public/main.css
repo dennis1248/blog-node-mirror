@@ -230,10 +230,6 @@ form input, form textarea {
   cursor: pointer;
 }
 
-.post table {
-  width: 100%;
-}
-
 .post img {
   width: 80%;
   display: block;
@@ -255,6 +251,12 @@ form input, form textarea {
 
 .post_table tr:nth-child(1) td {
   padding: 15px 40px 40px 40px;
+}
+
+.post_table {
+  table-layout: fixed;
+  width: 100%;
+  overflow: hidden;
 }
 
 .post_container_div_image {
