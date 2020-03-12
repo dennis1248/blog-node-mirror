@@ -16,3 +16,7 @@ pre {
   white-space: pre-wrap;
   font-size: 14px;
 }
+
+.post_table tr td p:nth-of-type(1) {
+  margin-top: 0;
+}
