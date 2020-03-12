@@ -13,4 +13,5 @@ pre {
   padding: 10px;
   border-left: 1px solid black;
   border-radius: 0 10px 10px 0;
+  white-space: pre-wrap;
 }
