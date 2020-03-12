@@ -2,3 +2,15 @@
 #container_post_style hr {
   width: 100%;
 }
+
+mark {
+  background-color: rgba(238, 238, 238);
+  padding: 0 4px 0 4px;
+}
+
+pre {
+  background-color: rgba(238, 238, 238, 0.5);
+  padding: 10px;
+  border-left: 1px solid black;
+  border-radius: 0 10px 10px 0;
+}
