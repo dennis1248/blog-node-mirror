@@ -154,7 +154,11 @@ app.post("/register", function (req, res) {
 
 // Login page
 app.get("/login", function (req, res) {
-  res.render("login.ejs", {messages: req.flash("info")});
+  if (req.isAuthenticated()) {
+    res.render("error.ejs", {error: "You already are logged in"});
+  } else {
+    res.render("login.ejs", {messages: req.flash("info")});
+  }
 })
 
 // Login
