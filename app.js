@@ -52,13 +52,19 @@ passport.deserializeUser(user.deserializeUser());
 // Use Method Override and look for _method
 app.use(methodOverride("_method"));
 
+// Check if logged in
+app.use(function (req, res, next) {
+  res.locals.isLoggedIn = req.isAuthenticated();
+  next();
+})
+
 // Home page
 app.get("/", function (req, res) {
   blogPost.find({}, function (err, blogPost) {
     if (err) {
       console.log(err);
     } else {
-      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1], isLoggedIn: req.isAuthenticated()}); // Pass last blog post
+      res.render("home.ejs", {lastBlogPost:blogPost[blogPost.length - 1]}); // Pass last blog post
     }
   })
 })
@@ -69,7 +75,7 @@ app.get("/posts", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("posts.ejs", {blogPost:blogPost, isLoggedIn: req.isAuthenticated()});
+      res.render("posts.ejs", {blogPost:blogPost});
     }
   })
 })
@@ -78,12 +84,12 @@ app.get("/posts/:id", function (req, res) {
   blogPost.findById(req.params.id, function (err, foundPost) {
     if (err) {
       console.log(err);
-      res.render("error.ejs", {error:"Error: The given ID is wrong or another error occurred", isLoggedIn: req.isAuthenticated()})
+      res.render("error.ejs", {error:"Error: The given ID is wrong or another error occurred"})
     } else {
       if (foundPost === null) {
-        res.render("error.ejs", {error:"Error: This post does not exist or it does no longer exist", isLoggedIn: req.isAuthenticated()});
+        res.render("error.ejs", {error:"Error: This post does not exist or it does no longer exist"});
       } else {
-        res.render("showpost.ejs", {post:foundPost, isLoggedIn: req.isAuthenticated()});
+        res.render("showpost.ejs", {post:foundPost});
       }
     }
   })
@@ -95,7 +101,7 @@ app.get("/projects", function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("projects.ejs", {projectPost:projectPost, isLoggedIn: req.isAuthenticated()});
+      res.render("projects.ejs", {projectPost:projectPost});
     }
   })
 })
@@ -104,12 +110,12 @@ app.get("/projects/:id", function (req, res) {
   projectPost.findById(req.params.id, function (err, foundProject) {
     if (err) {
       console.log(err);
-      res.render("error.ejs", {error:"Error: The given ID is wrong or another error occurred", isLoggedIn: req.isAuthenticated()});
+      res.render("error.ejs", {error:"Error: The given ID is wrong or another error occurred"});
     } else {
       if (foundProject === null) {
-        res.render("error.ejs", {error:"Error: This project does not exist or it does no longer exist", isLoggedIn: req.isAuthenticated()});
+        res.render("error.ejs", {error:"Error: This project does not exist or it does no longer exist"});
       } else {
-        res.render("showproject.ejs", {project:foundProject, isLoggedIn: req.isAuthenticated()});
+        res.render("showproject.ejs", {project:foundProject});
       }
     }
   })
@@ -117,17 +123,17 @@ app.get("/projects/:id", function (req, res) {
 
 // new project
 app.get("/newproject", isLoggedIn, function (req, res) {
-  res.render("newproject.ejs", {isLoggedIn: req.isAuthenticated()});
+  res.render("newproject.ejs");
 })
 
 // new posts
 app.get("/newpost", isLoggedIn, function (req, res) {
-  res.render("newpost.ejs", {isLoggedIn: req.isAuthenticated()});
+  res.render("newpost.ejs");
 })
 
 // register page
 app.get("/register", function (req, res) {
-  res.render("register.ejs", {isLoggedIn: req.isAuthenticated()});
+  res.render("register.ejs");
 })
 
 app.post("/register", function (req, res) {
@@ -142,13 +148,13 @@ app.post("/register", function (req, res) {
       })
     })
   } else {
-    res.render("error.ejs", {error:"This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow user account creation.", isLoggedIn: req.isAuthenticated()})
+    res.render("error.ejs", {error:"This site is currently configured to not allow account creation, in the server config set allowUserCreation to true to allow user account creation."})
   }
 })
 
 // Login page
 app.get("/login", function (req, res) {
-  res.render("login.ejs", {messages: req.flash("info"), isLoggedIn: req.isAuthenticated()});
+  res.render("login.ejs", {messages: req.flash("info")});
 })
 
 // Login
@@ -243,7 +249,7 @@ app.get("/projects/:id/edit", isLoggedIn, function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("editproject.ejs", {project:foundProject, isLoggedIn: req.isAuthenticated()});
+      res.render("editproject.ejs", {project:foundProject});
     }
   })
 })
@@ -285,7 +291,7 @@ app.get("/posts/:id/edit", isLoggedIn, function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render("edit.ejs", {post:foundPost, isLoggedIn: req.isAuthenticated()});
+      res.render("edit.ejs", {post:foundPost});
     }
   })
 })
