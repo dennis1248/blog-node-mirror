@@ -204,7 +204,7 @@ app.post("/newpost", isLoggedIn, function (req, res) {
       mm = String(today.getMonth() + 1).padStart(2, '0');
       yyyy = today.getFullYear();
 
-  today = mm + '/' + dd + '/' + yyyy;
+  today = dd + '/' + mm + '/' + yyyy;
 
   // Put everything in an object to make it easier to work with
   var newPost = {id: id, name: name, title: title, post: post, date: today, image: image, link: link};
